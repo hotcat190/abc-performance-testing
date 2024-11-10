@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run create-graph.py as module",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "graphs.create-graph",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
