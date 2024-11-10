@@ -29,6 +29,16 @@ for func, name in [(schaffer, "Schaffer"), (sphere, "Sphere"), (rastrigin, "Rast
         case "Rosenbrock":
             bound = 2
 
+    # Define iterations based on the function
+    if name == "Schaffer":
+        iterations = 450
+    elif name == "Sphere":
+        iterations = 25
+    elif name == "Rastrigin":
+        iterations = 100
+    elif name == "Rosenbrock":
+        iterations = 50
+
     # Initialize lists to store fitness and time averages for the current function
     avg_fitness_per_algo = []
     avg_time_per_algo = []
@@ -39,7 +49,7 @@ for func, name in [(schaffer, "Schaffer"), (sphere, "Sphere"), (rastrigin, "Rast
         time_sum = 0
 
         for _ in range(num_runs):
-            best_solution, best_fitness, elapsed_time = algorithm(func, dims=2, bound=bound)
+            best_solution, best_fitness, elapsed_time = algorithm(func, dims=2, bound=bound, iterations=iterations)
             fitness_sum += best_fitness
             time_sum += elapsed_time
 

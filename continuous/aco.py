@@ -2,7 +2,7 @@ import numpy as np
 import time  # Import time module
 
 # ACO parameters
-ANT_COUNT = 50
+ANT_COUNT = 100
 ITERATIONS = 300
 EVAPORATION_RATE = 0.5
 ALPHA = 1  # Influence of pheromone
@@ -26,7 +26,7 @@ def update_pheromone(pheromone_map, ant_solutions, decay=EVAPORATION_RATE):
     for ant in ant_solutions:
         pheromone_map += ant  # Add pheromone left by the ant
 
-def ant_colony_optimization(func, dims, bound, iterations=ITERATIONS, ant_count=ANT_COUNT):
+def ant_colony_optimization(func, dims, bound, iterations=ITERATIONS, ant_count=ANT_COUNT, callback=None):
     start_time = time.time()  # Record the start time
     
     # Step 1: Initialize pheromone map
@@ -54,6 +54,9 @@ def ant_colony_optimization(func, dims, bound, iterations=ITERATIONS, ant_count=
         if ant_fitness[best_ant_idx] < best_fitness:
             best_solution = ant_solutions[best_ant_idx]
             best_fitness = ant_fitness[best_ant_idx]
+
+        if callback and not callback(best_fitness, it):
+            break
         
         # print(f"Iteration {it + 1}: Best fitness = {best_fitness}, Best solution = {best_solution}")
     

@@ -3,7 +3,7 @@ import time
 import numpy as np
 
 # ABC parameters
-population_size = 50  # Number of solutions in the population
+population_size = 100  # Number of solutions in the population
 max_iter = 150       # Number of iterations
 
 # Initialize population
@@ -15,7 +15,7 @@ def evaluate_population(population, func):
     return np.array([func(individual) for individual in population])
 
 # ABC main loop
-def abc_algorithm(func, dims, bound):
+def abc_algorithm(func, dims, bound, iterations=max_iter, callback=None):
     population = initialize_population(dims, bound)
     fitness = evaluate_population(population, func)
     best_solution = population[np.argmin(fitness)]
@@ -24,7 +24,7 @@ def abc_algorithm(func, dims, bound):
     # Tracking for performance evaluation
     start_time = time.time()
     
-    for iteration in range(max_iter):
+    for iteration in range(iterations):
         for i in range(population_size):
             # Produce a new solution by modifying an existing one
             phi = np.random.uniform(-1, 1, dims)
@@ -44,6 +44,10 @@ def abc_algorithm(func, dims, bound):
         if np.min(fitness) < best_fitness:
             best_fitness = np.min(fitness)
             best_solution = population[np.argmin(fitness)]
+
+        # Call the callback if provided, and check if it wants to stop early
+        if callback and not callback(best_fitness, iteration):
+            break
         
     end_time = time.time()
     

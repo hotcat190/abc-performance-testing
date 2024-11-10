@@ -15,6 +15,13 @@
             "request": "launch",
             "program": "${workspaceFolder}/continuous/run.py",
             "console": "integratedTerminal"
-          }
+        },
+        {
+        "name": "Python: graph_iterations.py (Continuous)",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/continuous/graph_iterations.py",
+        "console": "integratedTerminal"
+        }
     ]
 }
