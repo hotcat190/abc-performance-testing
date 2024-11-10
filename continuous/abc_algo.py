@@ -4,7 +4,7 @@ import numpy as np
 
 # ABC parameters
 population_size = 50  # Number of solutions in the population
-max_iter = 1000       # Number of iterations
+max_iter = 150       # Number of iterations
 
 # Initialize population
 def initialize_population(dims, bound):

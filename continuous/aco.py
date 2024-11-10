@@ -3,7 +3,7 @@ import time  # Import time module
 
 # ACO parameters
 ANT_COUNT = 50
-ITERATIONS = 2000
+ITERATIONS = 300
 EVAPORATION_RATE = 0.5
 ALPHA = 1  # Influence of pheromone
 BETA = 2  # Influence of heuristic information (distance)

@@ -2,13 +2,13 @@ import numpy as np
 import random
 import time
 
-# Define Genetic Algorithm
-def genetic_algorithm(fitness_function, dims, bound, population_size=100, generations=400, mutation_rate=0.01, crossover_rate=0.7):
-    # Initialize Population (randomly generated solutions)
-    population = np.random.uniform(-bound, bound, (population_size, dims))  # You can adjust the range here based on the problem
+def genetic_algorithm(fitness_function, dims, bound, population_size=100, generations=60, mutation_rate=0.05, crossover_rate=0.7):
+    # Initialize Population (randomly generated solutions within bound)
+    population = np.random.uniform(-bound, bound, (population_size, dims))
 
+    # Modified fitness function to directly minimize the original function
     def fitness(x):
-        return 1 / (1 + fitness_function(x))  # Inverse of fitness_function to maximize it (for minimization problem)
+        return -fitness_function(x)
 
     def select_parents(population, fitness_values):
         # Tournament Selection
@@ -27,10 +27,12 @@ def genetic_algorithm(fitness_function, dims, bound, population_size=100, genera
         return parent1.copy(), parent2.copy()
 
     def mutate(child):
-        # Mutation: Randomly change a value in the child
+        # Mutation with limited range based on bound
         if random.random() < mutation_rate:
             idx = random.randint(0, dims - 1)
-            child[idx] = random.uniform(-5, 5)  # Mutation in the range -5 to 5
+            child[idx] += random.uniform(-bound / 10, bound / 10)
+            # Ensure the mutation stays within bounds
+            child[idx] = np.clip(child[idx], -bound, bound)
         return child
 
     # Track the best solution
@@ -45,7 +47,7 @@ def genetic_algorithm(fitness_function, dims, bound, population_size=100, genera
         # Track the best solution in the current population
         current_best_fitness = np.max(fitness_values)
         current_best_solution = population[np.argmax(fitness_values)]
-        
+
         if current_best_fitness > best_fitness:
             best_fitness = current_best_fitness
             best_solution = current_best_solution
@@ -64,4 +66,5 @@ def genetic_algorithm(fitness_function, dims, bound, population_size=100, genera
 
     elapsed_time = time.time() - start_time
 
-    return best_solution, best_fitness, elapsed_time
+    # Return positive best fitness for reporting consistency
+    return best_solution, -best_fitness, elapsed_time
