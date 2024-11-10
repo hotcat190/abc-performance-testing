@@ -22,6 +22,20 @@
         "request": "launch",
         "program": "${workspaceFolder}/continuous/graph_iterations.py",
         "console": "integratedTerminal"
-        }
+        },
+        {
+            "name": "Python: run.py (Knapsack)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/discrete/knapsack/run.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: run.py (TSP)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/discrete/tsp/run.py",
+            "console": "integratedTerminal"
+        },
     ]
 }
