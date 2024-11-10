@@ -8,6 +8,13 @@
             "module": "graphs.create-graph",
             "console": "integratedTerminal",
             "justMyCode": true
-        }
+        },
+        {
+            "name": "Python: run.py (Continuous)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/continuous/run.py",
+            "console": "integratedTerminal"
+          }
     ]
 }
