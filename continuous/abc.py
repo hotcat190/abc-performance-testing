@@ -2,7 +2,7 @@ import random
 import time
 import numpy as np
 
-from functions import schaffer,sphere,rastrigin
+from functions import schaffer,sphere,rastrigin,rosenbrock
 
 # ABC parameters
 population_size = 50  # Number of solutions in the population
@@ -55,6 +55,6 @@ def abc_algorithm(func):
     return best_solution, best_fitness, end_time - start_time
 
 # Running the algorithm on continuous functions
-for func, name in [(schaffer, "Schaffer"), (sphere, "Sphere"), (rastrigin, "Rastrigin")]:
+for func, name in [(schaffer, "Schaffer"), (sphere, "Sphere"), (rastrigin, "Rastrigin"), (rosenbrock, "Rosenbrock")]:
     best_solution, best_fitness, elapsed_time = abc_algorithm(func)
     print(f"{name} Function: Best Fitness = {best_fitness}, Time = {elapsed_time:.2f}s")
