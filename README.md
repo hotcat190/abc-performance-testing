@@ -80,6 +80,7 @@ data["depot"] = 0
 # Test results
 <h2>Continous functions</h2>
 <img src="continuous/interations-function-specific.png">
+<img src="continuous/continuous_result.png">
 <h2>Discrete problems</h2>
 <h3>Knapsack</h3>
 <img src="discrete/knapsack/Knapsack.png">
