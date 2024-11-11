@@ -76,3 +76,19 @@ data["depot"] = 0
 ```
 
 <b>Minima = 7293</b><br>
+
+# Test results
+<h2>Continous functions</h2>
+<img src="continuous/interations-function-specific.png">
+<h2>Discrete problems</h2>
+<h3>Knapsack</h3>
+<img src="discrete/knapsack/Knapsack.png">
+<h3>TSP</h3>
+<img src="discrete/tsp/tsp.png">
+
+# Conclusion
+The ABC algorithm performed better than the GA and ACO algorithm on continuous functions as implemented here, showing strong speed and precision, as well as possessing a good ability to escape local minima.<br>
+<br>
+Conversely, it performed worse on discrete problems. In these cases, the GA and ACO algorithms showed comparatively better adaptability, suggesting that while ABC is powerful for continuous optimization, its heuristics may require adjustments for tackling discrete search spaces effectively.<br>
+<br>
+Overall, this highlights the importance of choosing algorithms based on the specific nature of the problem, as each has unique strengths and weaknesses across different problem domains.<br>
